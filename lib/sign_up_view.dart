@@ -2,28 +2,31 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider_example/signin_viewmodel.dart';
 import 'package:provider/provider.dart';
 
-class SignInView extends StatelessWidget {
-  const SignInView({Key key}) : super(key: key);
+class SignUpView extends StatelessWidget {
+  const SignUpView({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.orange,
+      appBar: AppBar(
+        title: Text('Sign up'),
+      ),
       body: ChangeNotifierProvider<SignInViewModel>(
         builder: (_) => SignInViewModel(),
-        child: SignInWidget(),
+        child: SignUpWidget(),
       ),
     );
   }
 }
 
-class SignInWidget extends StatefulWidget {
-  SignInWidget({Key key}) : super(key: key);
+class SignUpWidget extends StatefulWidget {
+  SignUpWidget({Key key}) : super(key: key);
 
-  _SignInWidgetState createState() => _SignInWidgetState();
+  _SignUpWidgetState createState() => _SignUpWidgetState();
 }
 
-class _SignInWidgetState extends State<SignInWidget> {
+class _SignUpWidgetState extends State<SignUpWidget> {
   @override
   Widget build(BuildContext context) {
     var viewModel = Provider.of<SignInViewModel>(context);
@@ -104,17 +107,12 @@ class _SignInWidgetState extends State<SignInWidget> {
               SizedBox(
                 height: 20,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).pushNamed('/signup');
-                },
-                child: Text(
-                  'Sign up now',
-                  style: TextStyle(
-                    fontSize: 19,
-                    decoration: TextDecoration.underline,
-                    fontWeight: FontWeight.bold,
-                  ),
+              Text(
+                'Sign up now',
+                style: TextStyle(
+                  fontSize: 19,
+                  decoration: TextDecoration.underline,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
             ],
